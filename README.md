@@ -18,14 +18,14 @@ $wget http://www.inspire-intl.com/product/nextra/download/broker-centos6.6-mysql
 $gzip -d broker-centos6.6-mysql:0.8.tar.gz
 
 ### Load the docker image into the repository
-$sudo docker load < broker-centos6.6-mysql:0.8.tar
+$docker load < broker-centos6.6-mysql:0.8.tar
 
 ### Change the tag name
-$sudo docker images
+$docker images
 > REPOSITORY  TAG IMAGE ID CREATED VIRTUAL SIZE
 > <none>  <none>  116640a845cb  2 days ago  637.3 MB
 
-$sudo docker tag 116640a845cb broker-centos6.6-mysql:0.8
+$docker tag 116640a845cb broker-centos6.6-mysql:0.8
 
 ### Create environment variables to be used in the docker repository at start up
 $vi /etc/default/regist-docker-broker
@@ -44,7 +44,7 @@ $vi /etc/default/regist-docker-broker
 $./bin/broker -e ./env/broker.env
 
 ### Run the docker repository
-$sudo docker run -d -v /etc/default/regist-docker-broker:/etc/default/regist-docker-broker -p 1935:22 -p 5080:3306 broker-centos6.6-mysql:0.8
+$docker run -d -v /etc/default/regist-docker-broker:/etc/default/regist-docker-broker -p 1935:22 -p 5080:3306 broker-centos6.6-mysql:0.8
 
 ### Check if the docker image has been registered to the Broker
 $broklist localhost 9001
@@ -56,9 +56,9 @@ $ssh root@localhost -p 1935
  * password is the same as the login name.
 
 ### Stop the docker container
-$sudo docker ps
+$docker ps
 
-$sudo docker stop CONTAINER ID
+$ docker stop <CONTAINER ID>
 
 [Nextra](http://www.inspire-intl.com/product/product_nextra.html)
 
