@@ -39,6 +39,12 @@ $vi /etc/default/regist-docker-broker
 
 > SERVERPORT=1935
 
+If you run the docker on AWS and want to have the private host name to be registered, you can specify SERVERHOST as following:
+
+```sh
+SERVERHOST=`curl -s http://169.254.169.254/latest/meta-data/local-hostname`
+```
+
 # Test Drive
 ### Start broker on your local host
 $./bin/broker -e ./env/broker.env
