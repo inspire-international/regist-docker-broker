@@ -11,6 +11,10 @@ OS: Linux. We tested on AWS: amzn1.x86_64
 
 Software: Docker
 
+glibc >= 2.14 on which you run broker/broklist.
+
+> How to upgrade glibc to 2.14 is well described at http://kakakikikeke.blogspot.jp/2014/10/centosdrone.html
+
 # Preparation
 ### Download and unpack the docker image
 $wget http://www.inspire-intl.com/product/nextra/download/broker-centos6.6-mysql_0.8.tar.gz
