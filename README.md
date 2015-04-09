@@ -4,7 +4,7 @@ The naming server of Nextra called Broker can keep track the applications' locat
 This docker image registers its location information to Broker at start-up so that Broker can tell the whereabouts of the docker at request.
 
 # About this package
-This package includes broker and its utility broklist. You need to download the docker image which contains mysql and Nextra as described in this README.
+This package includes broker and its utility broklist.
 
 # Prerequisite
 OS: Linux. We tested on AWS: amzn1.x86_64
@@ -16,22 +16,15 @@ glibc >= 2.14 on which you run broker/broklist.
 > How to upgrade glibc to 2.14 is well described at http://kakakikikeke.blogspot.jp/2014/10/centosdrone.html
 
 # Preparation
-### Download and unpack the docker image
-$wget http://www.inspire-intl.com/product/nextra/download/broker-centos6.6-mysql_0.8.tar.gz
+### Open Docker file
+Open Docker file and change Docker image which you download from Docker Hub if you like. In order to this Docker file successfully build without change, we recommend you to download centos6.x from Docker Hub. 
 
-$gzip -d broker-centos6.6-mysql:0.8.tar.gz
+### Build your docker image
+* Open build.sh and change image name to be built if you prefer.
 
-### Load the docker image into the repository
-$sudo docker load < broker-centos6.6-mysql:0.8.tar
+* $./build.sh
 
-### Change the tag name
-$sudo docker images
-> REPOSITORY  TAG IMAGE ID CREATED VIRTUAL SIZE
-> <none>  <none>  116640a845cb  2 days ago  637.3 MB
-
-$sudo docker tag 116640a845cb broker-centos6.6-mysql:0.8
-
-### Create environment variables to be used in the docker repository at start up
+### Modify environment variables in the following file suit in your environment. This file is used by the docker repository at start up.
 $vi /etc/default/regist-docker-broker
 > BROKERHOST=localhost
 
@@ -41,7 +34,7 @@ $vi /etc/default/regist-docker-broker
 
 > SERVERNAME=docker
 
-> SERVERPORT=1935
+> SERVERPORT=1936
 
 If you run the docker on AWS and want to have the private host name to be registered, you can specify SERVERHOST as following:
 
@@ -54,14 +47,16 @@ SERVERHOST=`curl -s http://169.254.169.254/latest/meta-data/local-hostname`
 $./bin/broker -e ./env/broker.env
 
 ### Run the docker repository
-$sudo docker run -d -v /etc/default/regist-docker-broker:/etc/default/regist-docker-broker -p 1935:22 -p 5080:3306 broker-centos6.6-mysql:0.8
+* Open run.sh and change the repository name as necessary.
+
+* $./run.sh
 
 ### Check if the docker image has been registered to the Broker
-$broklist localhost 9001
+$./bin/broklist localhost 9001
 
 # Misc
 ### Logging into the docker image
-$ssh root@localhost -p 1935
+$ssh root@localhost -p 1936
 
  * password is the same as the login name.
 
