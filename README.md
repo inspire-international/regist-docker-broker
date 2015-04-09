@@ -24,15 +24,17 @@ Open Dockerfile and change Docker image name which you download from Docker Hub 
 
 * $./build.sh
 
-### Modify environment variables in the following file suit in your environment. This file is used by the docker repository at start up.
-$vi /etc/default/regist-docker-broker
+### Copy the following file to /tmp and modify environment variables in the file suit in your environment. This file is used by the docker repository at start up.
+$cp ./env/regist-docker-broker /tmp
+
+$vi /tmp/regist-docker-broker
 > BROKERHOST=localhost
 
 > BROKERPORT=9001
 
 > SERVERHOST=localhost
 
-> SERVERNAME=docker
+> SERVERNAME=user/test/docker
 
 > SERVERPORT=1936
 
