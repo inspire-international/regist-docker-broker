@@ -4,7 +4,7 @@ The naming server of Nextra called Broker can keep track the applications' locat
 This docker image registers its location information to Broker at start-up so that Broker can tell the whereabouts of the docker at request.
 
 # About this package
-This package includes broker and its utility broklist.
+This package includes broker, its utility broklist, Docker and supervisord.conf.
 
 # Prerequisite
 OS: Linux. We tested on AWS: amzn1.x86_64
@@ -16,8 +16,8 @@ glibc >= 2.14 on which you run broker/broklist.
 > How to upgrade glibc to 2.14 is well described at http://kakakikikeke.blogspot.jp/2014/10/centosdrone.html
 
 # Preparation
-### Open Docker file
-Open Docker file and change Docker image which you download from Docker Hub if you like. In order to this Docker file successfully build without change, we recommend you to download centos6.x from Docker Hub. 
+### Open Dockerfile
+Open Dockerfile and change Docker image name which you download from Docker Hub if you like. In order to this Dockerfile successfully built without change, we recommend you to download centos6.x from Docker Hub. 
 
 ### Build your docker image
 * Open build.sh and change image name to be built if you prefer.
