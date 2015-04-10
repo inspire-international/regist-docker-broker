@@ -3,6 +3,8 @@ The naming server of Nextra called Broker can keep track the applications' locat
 
 This docker image registers its location information to Broker at start-up so that Broker can tell the whereabouts of the docker at request.
 
+![Docker location discovery](http://www.inspire-intl.com/images/dockerLocationDiscovery_en.jpg)
+
 # About this package
 This package includes broker, its utility broklist, Docker and supervisord.conf.
 
