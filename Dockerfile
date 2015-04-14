@@ -22,6 +22,10 @@ RUN pip install supervisor
 RUN wget http://www.inspire-intl.com/product/nextra/download/docker/regist-docker-broker -O /etc/rc.d/init.d/regist-docker-broker
 RUN chmod +x /etc/rc.d/init.d/regist-docker-broker 
 
+# Install unregist-docker-broker 
+RUN wget http://www.inspire-intl.com/product/nextra/download/docker/unregist-docker-broker -O /etc/rc.d/init.d/unregist-docker-broker
+RUN chmod +x /etc/rc.d/init.d/unregist-docker-broker
+
 # Install broker
 RUN wget http://www.inspire-intl.com/product/nextra/download/docker/broker -O /usr/local/bin/broker
 RUN chmod +x /usr/local/bin/broker
