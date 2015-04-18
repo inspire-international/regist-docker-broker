@@ -1,9 +1,13 @@
 # regist-docker-broker
-The naming server of Nextra called Broker can keep track the applications' location info and provide the location info to the consumers whenever demanded.
+The naming server of Nextra called Broker can keep track the service location info and provide the location info to the consumers on demand.
 
 This docker image registers its location information to Broker at start-up so that Broker can tell the whereabouts of the docker at request.
 
 ![Docker location discovery](http://www.inspire-intl.com/images/dockerLocationDiscovery_en.jpg)
+
+#Demonstration on YouTube
+
+[![Demonstration on YouTube](http://img.youtube.com/vi/DxtPGHob29M/0.jpg)](http://www.youtube.com/watch?v=DxtPGHob29M)
 
 # About this package
 This package includes broker, its utility broklist, Dockerfile and supervisord.conf.
@@ -70,7 +74,7 @@ SERVERHOST=`curl -s http://169.254.169.254/latest/meta-data/local-hostname`
 ### Start broker on hostA
 $cd regist-docker-broker/
 
-$ chmod +x ./bin/*
+$chmod +x ./bin/*
 
 $./bin/broker -e ./env/broker.env -bg
 
