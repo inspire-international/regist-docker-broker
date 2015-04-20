@@ -3,6 +3,8 @@ The naming server of Nextra called Broker can keep track the service location in
 
 This docker image registers its location information to Broker at start-up so that Broker can tell the whereabouts of the docker at request.
 
+Additionally, service names along with their associated external/internal port numbers can be registered to Broker at Docker start-up.
+
 ![Docker location discovery](http://www.inspire-intl.com/images/dockerLocationDiscovery_en.jpg)
 
 #Demonstration on YouTube
@@ -49,19 +51,19 @@ $vi /tmp/regist-docker-broker
 
 > SERVERHOST=Hostname or IP Address where docker would run.
 
-> SERVERNAME=Name of Docker. Can be any name.
+> SERVERNAME=Name of Docker, service names or service names with port numbers. See the example below.
 
 > SERVERPORT=Port of Docker. Can be any port number.
 
 Example
 
-> BROKERHOST=ip-10-160-121-153.ap-northeast-1.compute.internal
+> BROKERHOST=10.160.121.153
 
 > BROKERPORT=9001
 
-> SERVERHOST= ip-10-120-22-161.ap-northeast-1.compute.internal
+> SERVERHOST=10.120.22.161
 
-> SERVERNAME=user/test/docker
+> SERVERNAME=srv1:1234/srv2:2345/srv3:3456
 
 > SERVERPORT=1936
 
@@ -85,6 +87,10 @@ $./bin/broker -e ./env/broker.env -bg
 
 ### Check if the Docker image has been registered to the Broker on hostA
 $./bin/broklist localhost 9001
+
+```sh
+srv1:1234/srv2:2345/srv3:3456 ip-10-120-22-161.ap-northeast-1.compute.internal   1936    10.120.22.161     0
+```
 
 # Misc
 ### Logging into the Docker image on hostB

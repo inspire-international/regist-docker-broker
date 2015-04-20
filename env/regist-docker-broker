@@ -1,5 +1,5 @@
-BROKERHOST=localhost
+BROKERHOST=10.160.121.153
 BROKERPORT=9001
-SERVERHOST=localhost
-SERVERNAME=user/test/docker
+SERVERHOST=`curl -s http://169.254.169.254/latest/meta-data/local-hostname`
+SERVERNAME=srv1:1234/srv2:2345/srv3:3456
 SERVERPORT=1936
